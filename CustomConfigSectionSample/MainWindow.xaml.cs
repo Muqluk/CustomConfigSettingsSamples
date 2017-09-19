@@ -15,20 +15,23 @@ namespace CustomConfigSectionSample
         public MainWindow()
         {
             InitializeComponent();
-            GetEnvironments();
+            GetSingleCollectionElements();
         }
 
-        public void GetEnvironments()
+        public void GetSingleCollectionElements()
         {
-            string output;
             Configuration envConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None) as Configuration;
 
-            EnvironmentConfigSection environmentsSection = envConfig.GetSection("ConfiguredEnvironments") as EnvironmentConfigSection;
+            SingleElementCollectionSection configSection = envConfig.GetSection("SingleElementCollectionSample") as SingleElementCollectionSection;
 
-            if (environmentsSection != null)
+            if (configSection != null)
             {
-                List<EnvironmentElement> environments = (from EnvironmentElement env in environmentsSection.Environments select env).ToList();
-                MessageBox.Show(environments.Select(x => x.Name).First());
+                List<SingleCollectionSampleElement> elementsCollection;
+                elementsCollection = (from SingleCollectionSampleElement element 
+                                      in configSection.SingleCollectionElements
+                                      select element).ToList();
+                var firstElem = elementsCollection.Select(x => x).First();
+                MessageBox.Show($"Name: { firstElem.Name }, FirstProp: { firstElem.SampleStringValue1 }, OptionalProp: { firstElem.SampleIntValue1 }");
             }
             else
             {
