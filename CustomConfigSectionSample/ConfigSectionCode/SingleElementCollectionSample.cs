@@ -13,7 +13,7 @@ namespace ConfigSectionCode
     public class SingleElementCollectionSection : ConfigurationSection
     {
         [ConfigurationProperty("SingleCollection", IsRequired = true)]
-        [ConfigurationCollection(typeof(SingleCollectionSampleCollection), AddItemName = "SingleCollection")]
+        [ConfigurationCollection(typeof(SingleCollectionSampleCollection), AddItemName = "SingleElement")]
         public SingleCollectionSampleCollection SingleCollectionElements
         {
             get

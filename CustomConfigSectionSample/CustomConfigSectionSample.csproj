@@ -63,9 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ConfigSectionCode\EnvironmentConfigSection.cs" />
-    <Compile Include="ConfigSectionCode\EnvironmentEcosystemSection.cs" />
     <Compile Include="ConfigSectionCode\SampleSection.cs" />
+    <Compile Include="ConfigSectionCode\SingleElementCollectionSample.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
