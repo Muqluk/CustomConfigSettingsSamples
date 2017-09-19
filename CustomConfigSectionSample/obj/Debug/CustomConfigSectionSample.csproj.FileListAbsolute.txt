@@ -1,0 +1,14 @@
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\bin\Debug\CustomConfigSectionSample.exe.config
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\bin\Debug\CustomConfigSectionSample.exe
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\bin\Debug\CustomConfigSectionSample.pdb
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\obj\Debug\MainWindow.g.cs
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\obj\Debug\App.g.cs
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\obj\Debug\CustomConfigSectionSample_MarkupCompile.cache
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\obj\Debug\CustomConfigSectionSample_MarkupCompile.lref
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\obj\Debug\MainWindow.baml
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\obj\Debug\CustomConfigSectionSample.g.resources
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\obj\Debug\CustomConfigSectionSample.Properties.Resources.resources
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\obj\Debug\CustomConfigSectionSample.csproj.GenerateResource.Cache
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\obj\Debug\CustomConfigSectionSample.exe
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\obj\Debug\CustomConfigSectionSample.pdb
+C:\repo\Projects\CustomConfigSectionSample\CustomConfigSectionSample\obj\Debug\CustomConfigSectionSample.csprojResolveAssemblyReference.cache
