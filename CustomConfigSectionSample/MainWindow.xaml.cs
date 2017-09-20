@@ -32,8 +32,27 @@ namespace CustomConfigSectionSample
                             in teamEnvCfgs.TeamEnvironments
                             select teamCfg).ToList();
                 var msg = "I see Teams!\r\n";
+                msg += "-------------------------\r\n";
 
-                teamEnvs.ForEach(x => { msg += $"Found Team: { x.Team }\r\n";  });
+                teamEnvs.ForEach(x =>
+                {
+                    msg += $"Found Team: { x.Team }\r\n";
+                    if (x.DeployedEnvironments.Count > 0)
+                    {
+                        msg += $"\tDeployed To: \r\n";
+                        (from DeployedEnvironment deployedEnv
+                         in x.DeployedEnvironments
+                         select deployedEnv).ToList().ForEach(y =>
+                         {
+                             msg += $"\t---{ y.Name }\r\n";
+                         });
+                    } else
+                    {
+                        msg += "\t(No known deployments)\r\n";
+                    }
+
+                });
+
                 MessageBox.Show(msg);
             }
             else

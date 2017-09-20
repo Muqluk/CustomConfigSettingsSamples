@@ -71,27 +71,48 @@ namespace ConfigSectionCode
             }
         }
 
-        [ConfigurationProperty("Environments")]
-        [ConfigurationCollection(typeof(EnvironmentsCollection), AddItemName = "Environment")]
-        public EnvironmentsCollection Environments
+        [ConfigurationProperty("DeployedEnvironments")]
+        [ConfigurationCollection(typeof(DeployedEnvironmentsCollection), AddItemName = "Environment")]
+        public DeployedEnvironmentsCollection DeployedEnvironments
         {
             get
             {
-                return (EnvironmentsCollection)base["Environments"];
+                return (DeployedEnvironmentsCollection)base["DeployedEnvironments"];
             }
         }
     }
 
-    public class EnvironmentsCollection : ConfigurationElementCollection
+    public class DeployedEnvironmentsCollection : ConfigurationElementCollection
     {
         protected override ConfigurationElement CreateNewElement()
         {
-            throw new NotImplementedException();
+            return new DeployedEnvironment();
         }
 
         protected override object GetElementKey(ConfigurationElement element)
         {
-            throw new NotImplementedException();
+            return ((DeployedEnvironment)element).Name;
+        }
+        
+        public DeployedEnvironment this[int index]
+        {
+            get
+            {
+                return (DeployedEnvironment)BaseGet(index);
+            }
+        }
+
+    }
+
+    public class DeployedEnvironment : ConfigurationElement
+    {
+        [ConfigurationProperty("Name", IsRequired = true)]
+        public string Name
+        {
+            get
+            {
+                return (string)base["Name"];
+            }
         }
     }
 
