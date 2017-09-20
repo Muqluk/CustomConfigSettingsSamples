@@ -15,7 +15,31 @@ namespace CustomConfigSectionSample
         public MainWindow()
         {
             InitializeComponent();
-            GetSingleCollectionElements();
+            GetFeatureTeams();
+            //GetSingleCollectionElements();
+        }
+
+        public void GetFeatureTeams()
+        {
+
+            Configuration envConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None) as Configuration;
+            TeamEnvironmentConfigurationsSection teamEnvCfgs = envConfig.GetSection("FeatureTeamConfigurations") as TeamEnvironmentConfigurationsSection;
+
+            if (teamEnvCfgs != null)
+            {
+                List<TeamEnvironmentConfig> teamEnvs;
+                teamEnvs = (from TeamEnvironmentConfig teamCfg
+                            in teamEnvCfgs.TeamEnvironments
+                            select teamCfg).ToList();
+                var msg = "I see Teams!\r\n";
+
+                teamEnvs.ForEach(x => { msg += $"Found Team: { x.Team }\r\n";  });
+                MessageBox.Show(msg);
+            }
+            else
+            {
+                throw new ConfigurationErrorsException("Failed to read FeatureTeamConfigurations");
+            }
         }
 
         public void GetSingleCollectionElements()
@@ -27,7 +51,7 @@ namespace CustomConfigSectionSample
             if (configSection != null)
             {
                 List<SingleCollectionSampleElement> elementsCollection;
-                elementsCollection = (from SingleCollectionSampleElement element 
+                elementsCollection = (from SingleCollectionSampleElement element
                                       in configSection.SingleCollectionElements
                                       select element).ToList();
                 var firstElem = elementsCollection.Select(x => x).First();

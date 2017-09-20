@@ -7,23 +7,82 @@ using System.Threading.Tasks;
 
 namespace ConfigSectionCode
 {
-    public class NestedElementCollectionSection : ConfigurationSection
+    public class TeamEnvironmentConfigurationsSection : ConfigurationSection
     {
-        [ConfigurationProperty("ParentCollection", IsRequired = true)]
-        [ConfigurationCollection(typeof(ParentElementCollection), AddItemName = "ChildCollection")]
-        public ParentElementCollection ParentCollection
+        [ConfigurationProperty("FeatureTeams", IsRequired = true)]
+        [ConfigurationCollection(typeof(TeamsEnvironmentCollection), AddItemName = "FeatureTeam")]
+        public TeamsEnvironmentCollection TeamEnvironments
         {
             get
             {
-                return (ParentElementCollection)base["ParentCollection"];
+                return (TeamsEnvironmentCollection)base["FeatureTeams"];
+            }
+        }
+    }
+
+    public class TeamsEnvironmentCollection : ConfigurationElementCollection
+    {
+        protected override ConfigurationElement CreateNewElement()
+        {
+            return new TeamEnvironmentConfig();
+        }
+
+        protected override object GetElementKey(ConfigurationElement element)
+        {
+            return ((TeamEnvironmentConfig)element).Team;
+        }
+
+        public TeamEnvironmentConfig this[int index]
+        {
+            get
+            {
+                return (TeamEnvironmentConfig)BaseGet(index);
             }
         }
 
     }
-    
-    #region Element Collections
 
-    public class ParentElementCollection : ConfigurationElementCollection
+    public class TeamEnvironmentConfig : ConfigurationElement
+    {
+        [ConfigurationProperty("Team", IsKey = true, IsRequired = true)]
+        public string Team
+        {
+            get
+            {
+                return (string)base["Team"];
+            }
+        }
+
+        [ConfigurationProperty("SqlDatabaseSuffix", DefaultValue = "")]
+        public string SqlDatabaseSuffix
+        {
+            get
+            {
+                return (string)base["SqlDatabaseSufix"];
+            }
+        }
+
+        [ConfigurationProperty("WebAppSuffix", DefaultValue = "")]
+        public string WebAppSuffix
+        {
+            get
+            {
+                return (string)base["WebAppSuffix"];
+            }
+        }
+
+        [ConfigurationProperty("Environments")]
+        [ConfigurationCollection(typeof(EnvironmentsCollection), AddItemName = "Environment")]
+        public EnvironmentsCollection Environments
+        {
+            get
+            {
+                return (EnvironmentsCollection)base["Environments"];
+            }
+        }
+    }
+
+    public class EnvironmentsCollection : ConfigurationElementCollection
     {
         protected override ConfigurationElement CreateNewElement()
         {
@@ -36,76 +95,4 @@ namespace ConfigSectionCode
         }
     }
 
-    public class ChildElementCollectionOne : ConfigurationElementCollection
-    {
-        protected override ConfigurationElement CreateNewElement()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override object GetElementKey(ConfigurationElement element)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class ChildElementCollectionTwo : ConfigurationElementCollection
-    {
-        protected override ConfigurationElement CreateNewElement()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override object GetElementKey(ConfigurationElement element)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    #endregion
-
-    #region Elements of Child Collections
-
-    public class ChildOneElementOne : ConfigurationElement
-    {
-        [ConfigurationProperty("Name", IsKey = true, IsRequired = true)]
-        public string Name
-        {
-            get
-            {
-                return (string)base["Name"];
-            }
-        }
-
-        [ConfigurationProperty("Url", IsRequired = true)]
-        public string Url
-        {
-            get
-            {
-                return (string)base["Url"];
-            }
-        }
-
-        [ConfigurationProperty("Port", IsRequired = true)]
-        [IntegerValidator(MinValue = 1000, MaxValue = 50000)]
-        public int Port
-        {
-            get
-            {
-                return (int)base["Port"];
-            }
-        }
-
-    }
-
-    public class ChildTwoElementOne : ConfigurationElement
-    {
-
-    }
-
-    public class ChildTwoElementTwo : ConfigurationElement
-    {
-
-    }
-#endregion
 }
