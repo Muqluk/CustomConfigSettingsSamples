@@ -29,6 +29,23 @@ namespace CustomConfigSectionSample.ViewModel
             }
         }
 
+        private FeatureTeam _selectedTeam;
+        public FeatureTeam SelectedTeam
+        {
+            get
+            {
+                return _selectedTeam;
+            }
+            set
+            {
+                if (value != _selectedTeam)
+                {
+                    _selectedTeam = value;
+                    RaisePropertyChanged("SelectedTeam");
+                }
+            }
+        }
+
         public NestedConfigCollectionViewModel()
         {
             GetFeatureTeamConfigurations();
