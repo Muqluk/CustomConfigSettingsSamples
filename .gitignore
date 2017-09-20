@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/CustomConfigSectionSample/v15
+/packages
+/CustomConfigSectionSample/obj/Debug/View
+/CustomConfigSectionSample/obj/Debug/View/MSDNSample.g.i.cs
+/CustomConfigSectionSample/obj/Debug/View/MSDNSample.g.cs
+/CustomConfigSectionSample/obj/Debug/View/MSDNSample.baml
+/CustomConfigSectionSample/obj/Debug/View
+/packages
