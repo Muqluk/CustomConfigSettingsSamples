@@ -1,7 +1,49 @@
 ﻿using System;
 using System.Configuration;
 
-namespace ConfigSectionCode
+/*
+    The sample below was taken almost in its entirety directly from the MSDN sample for the ConfigurationElementCollection Class.
+    https://msdn.microsoft.com/en-us/library/system.configuration.configurationelementcollection(v=vs.110).aspx
+    Below is the config section app.config or web.config entry.
+    ====================================================================================
+
+	<configSections>
+		<section name = "MyUrls" type="ConfigSectionCode.UrlsSection, CustomConfigSectionSample"/>
+	</configSections>
+	<startup>
+		<supportedRuntime version = "v4.0" sku=".NETFramework,Version=v4.5.2" />
+	</startup>
+	<MyUrls>
+		<urls>
+			<add name = "first" url="http://yeahright.com" port="4040"/>
+		</urls>
+	</MyUrls>
+
+    And this is the sample for how to consume the configsection code below.
+    ====================================================================================
+     private void GetConfig()
+        {
+            string output;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None) as Configuration;
+            UrlsSection myUrlsSection = config.GetSection("MyUrls") as UrlsSection;
+
+            if (myUrlsSection == null)
+            {
+                output = "Failed to load UrlsSection.";
+            }
+            else
+            {
+                output = "Collection elements contained in the custom section collection:\r\n";
+                for (int i = 0; i < myUrlsSection.Urls.Count; i++)
+                {
+                    output += $"   Name={myUrlsSection.Urls[i].Name} URL={myUrlsSection.Urls[i].Url} Port={myUrlsSection.Urls[i].Port}\r\n";
+                }
+            }
+
+        }
+*/
+
+namespace ConfigurationSectionSamples
 {
     public class UrlsSection : ConfigurationSection
     {
@@ -131,5 +173,4 @@ namespace ConfigSectionCode
         }
 
     }
-
 }

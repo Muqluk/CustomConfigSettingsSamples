@@ -71,11 +71,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ConfigSectionSampleCode\NestedElementCollectionSample.cs" />
+    <Compile Include="Model\Environment.cs" />
+    <Compile Include="Model\FeatureTeam.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NestedConfigCollectionViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\MSDNSample.xaml.cs">
       <DependentUpon>MSDNSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NestedConfigCollectionView.xaml.cs">
+      <DependentUpon>NestedConfigCollectionView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -85,13 +90,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ConfigSectionSampleCode\SampleSection.cs" />
-    <Compile Include="ConfigSectionSampleCode\SingleElementCollectionSample.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\MSDNSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NestedConfigCollectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,5 +131,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ConfigurationSectionSamples\ConfigurationSectionSamples.csproj">
+      <Project>{c6c7fafe-4aba-4832-8040-110887578bb5}</Project>
+      <Name>ConfigurationSectionSamples</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
-namespace ConfigSectionCode
+namespace ConfigurationSectionSamples
 {
     public class TeamEnvironmentConfigurationsSection : ConfigurationSection
     {
@@ -58,7 +53,7 @@ namespace ConfigSectionCode
         {
             get
             {
-                return (string)base["SqlDatabaseSufix"];
+                return (string)base["SqlDatabaseSuffix"];
             }
         }
 
@@ -93,7 +88,7 @@ namespace ConfigSectionCode
         {
             return ((DeployedEnvironment)element).Name;
         }
-        
+
         public DeployedEnvironment this[int index]
         {
             get
@@ -115,5 +110,4 @@ namespace ConfigSectionCode
             }
         }
     }
-
 }
