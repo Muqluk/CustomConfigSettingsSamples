@@ -5,6 +5,6 @@
         Title="MainWindow" SizeToContent="WidthAndHeight"
         DataContext="{ Binding Source={ StaticResource Locator }, Path=Main }">
     <Grid>
-        <views:NestedConfigCollectionView></views:NestedConfigCollectionView>
+        <views:NestedConfigCollectionView DataContext="{ Binding NestedConfigSampleControl }"></views:NestedConfigCollectionView>
     </Grid>
 </Window>

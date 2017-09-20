@@ -10,7 +10,6 @@ namespace CustomConfigSectionSample.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<NestedConfigCollectionViewModel>();
         }
 
         public MainViewModel Main
@@ -18,14 +17,6 @@ namespace CustomConfigSectionSample.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
-        }
-
-        public NestedConfigCollectionViewModel NestedConfigSample
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<NestedConfigCollectionViewModel>();
             }
         }
     }
